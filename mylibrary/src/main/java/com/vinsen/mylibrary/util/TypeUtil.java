@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 /**
  * 
@@ -51,7 +52,7 @@ public class TypeUtil {
 			s = "'" + o.toString() + "'";
 		} else if (num == 2) {
 			s = "to_date('"
-					+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(o)
+					+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA).format(o)
 					+ "','yyyy-mm-dd HH24:MI:SS')";
 		}
 		return s;
@@ -67,7 +68,7 @@ public class TypeUtil {
 		} else if (num == 2) {
 			java.util.Date dt = (java.util.Date) o;
 			pstmt.setTimestamp(i, Timestamp.valueOf(new SimpleDateFormat(
-					"yyyy-MM-dd HH:mm:ss").format(dt)));
+					"yyyy-MM-dd HH:mm:ss", Locale.CHINA).format(dt)));
 		}
 	}
 }
