@@ -7,7 +7,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by op on 17/3/8.
+ * 线程统一管理，避免乱开线程，造成浪费
+ * Created by Vinsen on 17/3/8.
  */
 
 public class ThreadManager {
@@ -16,36 +17,30 @@ public class ThreadManager {
     private static ThreadPoolExecutor executor;
 
     /**
-     * @param corePoolSize    线程池维护线程的最少数量
-     * @param maximumPoolSize 线程池维护线程的最大数量
-     * @param keepAliveTime   线程池维护线程所允许的空闲时间
+     * corePoolSize    线程池维护线程的最少数量
+     * maximumPoolSize 线程池维护线程的最大数量
+     * keepAliveTime   线程池维护线程所允许的空闲时间
      */
-    public static void init(int corePoolSize, int maximumPoolSize, long keepAliveTime) {
-        executor = new ThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime, TimeUnit.MILLISECONDS, new LinkedBlockingDeque<Runnable>());
+    public static void init() {
+        int corePoolSize = Runtime.getRuntime().availableProcessors() + 1;
+        int maximumPoolSize = corePoolSize * 2 + 1;
+        executor = new ThreadPoolExecutor(corePoolSize, maximumPoolSize, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingDeque<Runnable>());
     }
 
-
+    // 后台执行一个任务
     public static void doInBackGround(Runnable runnable) {
         if (executor == null) {
             throw new NullPointerException("have not init executor,please init first");
         }
-        if (!isMainThread()) {
-            executor.execute(runnable);
-        } else {
-            throw new RuntimeException("it is in main thread .");
-        }
+        executor.execute(runnable);
     }
 
-
-    public static void doInMainThread(Runnable runnable) {
+    // 判断线程池内是否还有线程在工作
+    public static boolean isAllFinish() {
         if (executor == null) {
             throw new NullPointerException("have not init executor,please init first");
         }
-        if (isMainThread()) {
-            executor.execute(runnable);
-        } else {
-            throw new RuntimeException("it is not in main thread .");
-        }
+        return executor.getActiveCount() == 0;
     }
 
 
