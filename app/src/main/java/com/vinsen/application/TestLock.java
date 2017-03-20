@@ -10,15 +10,15 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class TestLock {
 
-    String[] array = new String[50];
+    private String[] array = new String[50];
 
-    int currentIndex;
+    private int currentIndex;
 
 
-    Lock lock;
+    private Lock lock;
 
-    Condition isFull;
-    Condition isEmpty;
+    private Condition isFull;
+    private Condition isEmpty;
 
     public TestLock() {
         lock = new ReentrantLock();
