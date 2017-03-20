@@ -19,6 +19,9 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,31 +38,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Example of a call to a native method
-
-
-        container = (LinearLayout) findViewById(R.id.container);
-        tv = new TextView(this);
-        tv.setText(VoiceHelper.play("test test"));
-
-        ThreadManager.init();
-
-        ThreadManager.doInBackGround(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        final Button btn = (Button) findViewById(R.id.btn);
-        if (ThreadManager.isAllFinish()){
-            Log.e("vinsen","all task finish ...");
-        }else {
-            Log.e("vinsen","have task on doing");
-        }
     }
 
 }
