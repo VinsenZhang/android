@@ -1,1 +1,1 @@
-include ':app', ':mylibrary', ':application'
+include ':app', ':mylibrary', ':adsdk'
