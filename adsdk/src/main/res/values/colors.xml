@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="sdk_clarity">#00000000</color>
+    <color name="sdk_half_clarity">#30ffffff</color>
+    <color name="sdk_next_activity_btn_color">#60ffffff</color>
+</resources>

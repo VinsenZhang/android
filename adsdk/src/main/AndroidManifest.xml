@@ -2,9 +2,11 @@
 
     package="com.sdk.adsdk">
 
-    <application android:allowBackup="true" android:label="@string/app_name"
+    <application
+        android:allowBackup="true"
         android:supportsRtl="true">
 
+        <activity android:name=".ads.OpenScreenAd" />
     </application>
 
 </manifest>
