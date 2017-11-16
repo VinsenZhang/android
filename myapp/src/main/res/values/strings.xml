@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">MyApp</string>
+    <string name="radio_home_btn_text">首页</string>
+    <string name="radio_category_btn_text">分类</string>
+    <string name="radio_mine_btn_text">我的</string>
+</resources>

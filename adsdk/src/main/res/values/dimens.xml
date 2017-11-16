@@ -2,6 +2,7 @@
 <resources>
 
     <dimen name="sdk_title">16dp</dimen>
+    <dimen name="sdk_big_title">18dp</dimen>
     <dimen name="sdk_subtitle">12dp</dimen>
 
 

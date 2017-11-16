@@ -1,46 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/sdk_insert_bg"
-    android:orientation="vertical">
+    android:background="@drawable/sdk_insert_bg">
 
-    <FrameLayout
-        android:id="@+id/insert_head"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <ImageView
+
+        <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/head_img"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/sdk_def" />
-
-        <ImageView
-            android:id="@+id/close_icon"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="end"
-            android:layout_margin="5dp"
-            android:src="@drawable/sdk_close" />
-    </FrameLayout>
-
-    <RelativeLayout
-        android:id="@+id/insert_foot"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <ImageView
-            android:id="@+id/insert_icon"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_centerVertical="true"
-            android:src="@drawable/sdk_def" />
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            fresco:actualImageScaleType="fitXY"
+            fresco:placeholderImage="@drawable/sdk_def"
+            fresco:roundedCornerRadius="@dimen/sdk_title" />
 
 
-    </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/insert_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:textSize="@dimen/sdk_title"
+                android:textStyle="bold" />
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/insert_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:textSize="@dimen/sdk_subtitle" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/insert_icon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_margin="10dp"
+        fresco:actualImageScaleType="fitXY"
+        fresco:placeholderImage="@drawable/sdk_def"
+        fresco:roundedCornerRadius="5dp" />
+
+    <ImageView
+        android:id="@+id/close_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_margin="5dp"
+        android:src="@drawable/sdk_close" />
+
+</RelativeLayout>

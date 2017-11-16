@@ -1,24 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/open_screen_container"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/open_screen_img"
+    <FrameLayout
+        android:id="@+id/open_screen_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/sdk_def" />
+        android:layout_above="@+id/app_title_layout">
 
-    <TextView
-        android:text="跳过(5s)"
-        android:padding="10dp"
-        android:textStyle="bold"
-        android:background="@drawable/sdk_open_screen_next_btn_bg"
-        android:id="@+id/go_next_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_margin="5dp" />
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/open_screen_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            fresco:failureImageScaleType="fitXY"
+            fresco:placeholderImage="@drawable/sdk_def" />
 
-</FrameLayout>
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/ad_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="20dp"
+            fresco:failureImageScaleType="fitXY"
+            fresco:placeholderImage="@drawable/sdk_def" />
+
+
+        <TextView
+            android:id="@+id/go_next_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_margin="15dp"
+            android:background="@drawable/sdk_open_screen_next_btn_bg"
+            android:padding="10dp"
+            android:text="跳过(5s)"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/app_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/app_icon"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="20dp"
+            android:layout_marginLeft="40dp"
+            fresco:failureImageScaleType="fitXY"
+            fresco:placeholderImage="@drawable/sdk_def" />
+
+
+        <TextView
+            android:id="@+id/app_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/sdk_big_title"
+            android:textStyle="bold" />
+    </LinearLayout>
+</RelativeLayout>

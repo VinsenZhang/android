@@ -6,6 +6,7 @@ import android.content.Context;
 import android.util.DisplayMetrics;
 
 import com.sdk.adsdk.listener.AdListener;
+import com.sdk.adsdk.utils.CommUtils;
 
 
 public abstract class Ad {
@@ -21,16 +22,12 @@ public abstract class Ad {
     public abstract void destory();
 
     protected int getScreenWidth() {
-        return getMetric().widthPixels;
+        return CommUtils.getMetric(mContext).widthPixels;
     }
 
     protected int getScreenHeight() {
-        return getMetric().heightPixels;
+        return CommUtils.getMetric(mContext).heightPixels;
     }
 
-    protected DisplayMetrics getMetric() {
-        DisplayMetrics metric = new DisplayMetrics();
-        mContext.getWindowManager().getDefaultDisplay().getMetrics(metric);
-        return metric;
-    }
+
 }

@@ -2,6 +2,9 @@ package com.sdk.adsdk.utils;
 
 import android.os.Looper;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -34,6 +37,16 @@ public class ThreadManager {
         }
         executor.execute(runnable);
     }
+
+
+    // 执行一个callable  返回一个Future
+    public static <T> Future<T> getCallableRes(Callable<T> callable) {
+        if (executor == null) {
+            throw new NullPointerException("have not init executor,please init first");
+        }
+        return executor.submit(callable);
+    }
+
 
     // 判断线程池内是否还有线程在工作
     public static boolean isAllFinish() {
