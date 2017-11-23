@@ -1,12 +1,12 @@
 package com.vinsen.myapp.base;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
 
 
-public class BaseAc  extends AppCompatActivity {
+public class BaseAc  extends Activity {
 
 
     @Override

@@ -1,7 +1,8 @@
 package com.vinsen.myapp.base;
 
-import android.support.v4.app.Fragment;
 
-public class BaseFragment extends Fragment{
+import android.app.Fragment;
+
+public class BaseFragment extends Fragment {
 
 }

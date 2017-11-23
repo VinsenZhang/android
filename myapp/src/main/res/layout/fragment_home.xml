@@ -1,0 +1,31 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.vinsen.myapp.home.HomeFragment">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/home_banner"
+            android:layout_width="match_parent"
+            android:layout_height="300dp" />
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/home_cate"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/home_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</FrameLayout>
