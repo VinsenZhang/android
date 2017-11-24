@@ -12,7 +12,6 @@ import com.squareup.picasso.Picasso;
 import com.vinsen.myapp.R;
 import com.vinsen.myapp.home.bean.CateBean;
 
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -28,23 +27,16 @@ public class HomeCateAdapter extends RecyclerView.Adapter<HomeCateAdapter.HomeCa
 
     private Context mContext;
 
-    public HomeCateAdapter(Context mContext) {
+    public HomeCateAdapter(Context mContext,List<CateBean> datas) {
         this.mContext = mContext;
         this.inflater = LayoutInflater.from(mContext);
+        this.datas = datas;
     }
 
-    public void setDatas(List<CateBean> datas) {
-        if (this.datas == null) {
-            this.datas = Collections.emptyList();
-        }
-        this.datas.clear();
-        this.datas.addAll(datas);
-        notifyDataSetChanged();
-    }
 
     @Override
     public HomeCateItem onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = inflater.inflate(R.layout.home_cate_item, parent);
+        View itemView = inflater.inflate(R.layout.home_cate_item, parent,false);
         return new HomeCateItem(itemView);
     }
 
