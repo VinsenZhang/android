@@ -2,15 +2,14 @@ package com.vinsen.myapp.home;
 
 
 import android.app.Fragment;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
@@ -27,6 +26,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
+@RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
 public class HomeFragment extends Fragment {
 
 
@@ -34,11 +34,11 @@ public class HomeFragment extends Fragment {
     private List<ImageView> banners = new ArrayList<>();
     private HomeBannerAdapter bannerAdapter;
 
-    private RecyclerView categoryRv;
+    private GridView categoryRv;
     private List<CateBean> cateData = new ArrayList<>();
     private HomeCateAdapter cateAdapter;
 
-    private RecyclerView listRv;
+    private GridView listRv;
     private List<HomeListBean> listData = new ArrayList<>();
     private HomeListAdapter listAdapter;
 
@@ -68,6 +68,7 @@ public class HomeFragment extends Fragment {
 
 
     private void initView(View contentView) {
+
         // banner view init
         banner = (ViewPager) contentView.findViewById(R.id.home_banner);
         bannerAdapter = new HomeBannerAdapter(banners);
@@ -75,24 +76,22 @@ public class HomeFragment extends Fragment {
 
 
         // cate view init
-        categoryRv = (RecyclerView) contentView.findViewById(R.id.home_cate);
-        GridLayoutManager cateLayoutManager = new GridLayoutManager(this.getActivity(), 4);
-        cateLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        categoryRv.setLayoutManager(cateLayoutManager);
-        cateAdapter = new HomeCateAdapter(getActivity(), cateData);
+        categoryRv = (GridView) contentView.findViewById(R.id.home_cate);
+        cateAdapter = new HomeCateAdapter(cateData,R.layout.home_cate_item);
         categoryRv.setAdapter(cateAdapter);
 
         // list view init
-        listRv = (RecyclerView) contentView.findViewById(R.id.home_list);
-        GridLayoutManager listLayoutManager = new GridLayoutManager(getActivity(), 1);
-        listLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        listRv.setLayoutManager(listLayoutManager);
-        listAdapter = new HomeListAdapter(getActivity(), listData);
+        listRv = (GridView) contentView.findViewById(R.id.home_list);
+        listAdapter = new HomeListAdapter(listData, R.layout.home_list_item);
         listRv.setAdapter(listAdapter);
 
     }
 
     private void loadData() {
+        banners.clear();
+        cateData.clear();
+        listData.clear();
+
         for (int i = 0; i < 3; i++) {
             ImageView imageView = new ImageView(getActivity());
             Picasso.with(getActivity())

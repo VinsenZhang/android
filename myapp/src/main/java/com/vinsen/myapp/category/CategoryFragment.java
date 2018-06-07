@@ -2,7 +2,9 @@ package com.vinsen.myapp.category;
 
 
 import android.app.Fragment;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import com.vinsen.myapp.R;
 /**
  * A simple {@link Fragment} subclass.
  */
+@RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
 public class CategoryFragment extends Fragment {
 
 

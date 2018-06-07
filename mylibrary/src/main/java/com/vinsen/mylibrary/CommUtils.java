@@ -1,6 +1,7 @@
 package com.vinsen.mylibrary;
 
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageInfo;
@@ -11,6 +12,7 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.provider.Settings;
+import android.support.v4.app.ActivityCompat;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 
@@ -71,11 +73,16 @@ public class CommUtils {
      * 获取手机的imei
      */
     public static String getDeviceId(Context context) {
-        TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         try {
+
+            TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+
+            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+                throw new RuntimeException("not have read phone state...");
+            }
             return telephonyManager.getDeviceId();
         } catch (Exception e) {
-            return "";
+            return e.getMessage();
         }
 
     }

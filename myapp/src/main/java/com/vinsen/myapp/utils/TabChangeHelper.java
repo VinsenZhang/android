@@ -3,6 +3,8 @@ package com.vinsen.myapp.utils;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -23,6 +25,7 @@ public class TabChangeHelper implements RadioGroup.OnCheckedChangeListener {
     private int containerId;
 
 
+    @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     public TabChangeHelper(Activity context, List<Fragment> fragments, RadioGroup radioGroup, int containerId) {
         this.fragments = fragments;
         this.containerId = containerId;
@@ -37,6 +40,7 @@ public class TabChangeHelper implements RadioGroup.OnCheckedChangeListener {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         Fragment fragment = null;
@@ -56,6 +60,5 @@ public class TabChangeHelper implements RadioGroup.OnCheckedChangeListener {
         }
 
         fragmentManager.beginTransaction().replace(containerId, fragment).commit();
-
     }
 }
