@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 27
     buildToolsVersion '27.0.3'
 
 
     defaultConfig {
         applicationId "com.vinsen.myapp"
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
 
@@ -24,16 +24,14 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:25+'
-    compile 'com.android.support:recyclerview-v7:25+'
+    api 'com.android.support:recyclerview-v7:25+'
     // rx
-    compile 'io.reactivex.rxjava2:rxjava:2.0.5'
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    api 'io.reactivex.rxjava2:rxjava:2.0.5'
+    api 'io.reactivex.rxjava2:rxandroid:2.0.1'
     //retrofit
-    compile 'com.squareup.okhttp3:okhttp:3.8.1'
-    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    api 'com.squareup.okhttp3:okhttp:3.8.1'
+    api 'com.squareup.retrofit2:retrofit:2.3.0'
     //picasso
-    compile 'com.squareup.picasso:picasso:2.5.2'
-
-    compile 'in.srain.cube:ultra-ptr:1.0.11'
-
+    api 'in.srain.cube:ultra-ptr:1.0.11'
+    api 'com.github.bumptech.glide:glide:4.7.1'
 }
