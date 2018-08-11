@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 import com.vinsen.myapp.R;
 import com.vinsen.myapp.home.adapter.HomeBannerAdapter;
 import com.vinsen.myapp.home.adapter.HomeCateAdapter;
@@ -94,9 +94,8 @@ public class HomeFragment extends Fragment {
 
         for (int i = 0; i < 3; i++) {
             ImageView imageView = new ImageView(getActivity());
-            Picasso.with(getActivity())
+            Glide.with(getActivity())
                     .load("http://mpic.tiankong.com/7a1/afd/7a1afd23a1586dccd5296ed8ccca99e1/640.jpg@360h")
-                    .placeholder(R.drawable.ic_launcher)
                     .into(imageView);
             banners.add(imageView);
         }
