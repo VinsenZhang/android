@@ -12,26 +12,69 @@ android {
         versionCode 1
         versionName "1.0"
 
+        flavorDimensions "channel"
+
     }
     buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String","domain","www.vinsen.com")
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String","domain","\"www.vinsen.com\"")
         }
     }
+
+    lintOptions{
+        abortOnError false
+    }
+
+
+    productFlavors {
+
+        kuan {
+            dimension "channel"
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "kuan"]
+        }
+        xiaomi {
+            dimension "channel"
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi"]
+        }
+        qh360 {
+            dimension "channel"
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "qh360"]
+        }
+        baidu {
+            dimension "channel"
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baidu"]
+        }
+        wandoujia {
+            dimension "channel"
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "wandoujia"]
+        }
+    }
+
+
+
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:25+'
-    api 'com.android.support:recyclerview-v7:25+'
+    implementation 'com.android.support:recyclerview-v7:25+'
     // rx
-    api 'io.reactivex.rxjava2:rxjava:2.0.5'
-    api 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    //retrofit
-    api 'com.squareup.okhttp3:okhttp:3.8.1'
-    api 'com.squareup.retrofit2:retrofit:2.3.0'
-    //picasso
-    api 'in.srain.cube:ultra-ptr:1.0.11'
-    api 'com.github.bumptech.glide:glide:4.7.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.0.5'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    // retrofit
+    implementation 'com.squareup.okhttp3:okhttp:3.8.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
+    // glide image loader
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    // Gson
+    implementation 'com.google.code.gson:gson:2.8.5'
 }
